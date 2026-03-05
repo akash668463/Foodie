@@ -6,7 +6,7 @@ using System.Text;
 using static Foodie.Web.Utility.SD;
 
 
-namespace Mango.Web.Service
+namespace Foodie.Web.Service
 {
     public class BaseService : IBaseService
     {
