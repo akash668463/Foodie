@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponAPI", "..\CouponAPI\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foodie.Web", "Foodie.Web\Foodie.Web.csproj", "{739AA457-B35C-42AB-B2D3-AB118042341F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{739AA457-B35C-42AB-B2D3-AB118042341F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739AA457-B35C-42AB-B2D3-AB118042341F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739AA457-B35C-42AB-B2D3-AB118042341F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{65929F6B-33E9-4805-9115-5346A0A4E5A4} = {33D08E12-3503-4A45-B609-D21BC35B6F36}
 		{739AA457-B35C-42AB-B2D3-AB118042341F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2E6E3617-DF9D-493B-BE97-44A2C64BE0CF} = {33D08E12-3503-4A45-B609-D21BC35B6F36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {08570AD9-3395-4D02-8072-EEC1A7C2E379}
