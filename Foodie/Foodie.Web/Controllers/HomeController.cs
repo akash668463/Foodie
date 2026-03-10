@@ -1,5 +1,7 @@
 using Foodie.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Foodie.Web.Utility;
+using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
 
 namespace Foodie.Web.Controllers
