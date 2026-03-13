@@ -1,17 +1,20 @@
 ﻿using Foodie.Web.Models;
 using Foodie.Web.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Foodie.Web.Controllers
 {
+    [Authorize]
     public class CouponController : Controller
     {
         private readonly ICouponService _couponService;
         public CouponController(ICouponService couponService)
         {
-              _couponService = couponService;
+            _couponService = couponService;
         }
+
         public async Task<IActionResult> CouponIndex()
         {
             List<CouponDto>? list = new();
@@ -29,11 +32,15 @@ namespace Foodie.Web.Controllers
 
             return View(list);
         }
+
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CouponCreate()
         {
             return View();
         }
+
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CouponCreate(CouponDto model)
         {
             if (ModelState.IsValid)
@@ -52,6 +59,8 @@ namespace Foodie.Web.Controllers
             }
             return View(model);
         }
+
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CouponDelete(int couponId)
         {
             ResponseDto? response = await _couponService.GetCouponByIdAsync(couponId);
@@ -69,6 +78,7 @@ namespace Foodie.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CouponDelete(CouponDto couponDto)
         {
             ResponseDto? response = await _couponService.DeleteCouponsAsync(couponDto.CouponId);
