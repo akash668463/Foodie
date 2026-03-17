@@ -111,6 +111,7 @@ namespace Foodie.Web.Controllers
 
             var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
             
+            // Extract standard claims
             identity.AddClaim(new Claim(JwtRegisteredClaimNames.Email,
                 jwt.Claims.FirstOrDefault(u => u.Type == JwtRegisteredClaimNames.Email)?.Value ?? ""));
             identity.AddClaim(new Claim(JwtRegisteredClaimNames.Sub,
@@ -121,10 +122,11 @@ namespace Foodie.Web.Controllers
             identity.AddClaim(new Claim(ClaimTypes.Name,
                 jwt.Claims.FirstOrDefault(u => u.Type == JwtRegisteredClaimNames.Email)?.Value ?? ""));
             
-            // Extract all role claims - handle both claim types
-            var roleClaims = jwt.Claims.Where(u => u.Type == ClaimTypes.Role);
+            // Extract role claims - this is critical
+            var roleClaims = jwt.Claims.Where(u => u.Type == "role" || u.Type == ClaimTypes.Role);
             foreach (var roleClaim in roleClaims)
             {
+                // Add role as ClaimTypes.Role so ASP.NET Core authorization can validate it
                 identity.AddClaim(new Claim(ClaimTypes.Role, roleClaim.Value));
             }
 

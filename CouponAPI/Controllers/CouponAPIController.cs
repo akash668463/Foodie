@@ -11,6 +11,7 @@ namespace CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
+    //[Authorize]
     public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
@@ -24,21 +25,21 @@ namespace CouponAPI.Controllers
             _mapper = mapper;
         }
 
-       [HttpGet]
-       public ResponseDto Get()
-       {
+        [HttpGet]
+        public ResponseDto Get()
+        {
             try
             {
                 IEnumerable<Coupon> objList = _db.Coupons.ToList();
                 _response.Result = _mapper.Map<IEnumerable<CouponDto>>(objList);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
             return _response;
-       }
+        }
 
         [HttpGet]
         [Route("{id:int}")]
@@ -46,7 +47,7 @@ namespace CouponAPI.Controllers
         {
             try
             {
-                Coupon obj = _db.Coupons.First(u=>u.CouponId==id);
+                Coupon obj = _db.Coupons.First(u => u.CouponId == id);
                 _response.Result = _mapper.Map<CouponDto>(obj);
             }
             catch (Exception ex)
