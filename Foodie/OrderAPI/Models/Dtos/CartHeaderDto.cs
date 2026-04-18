@@ -1,4 +1,4 @@
-﻿namespace EmailAPI.Models.Dtos
+﻿namespace OrderAPI.Models.Dtos
 {
     public class CartHeaderDto
     {
