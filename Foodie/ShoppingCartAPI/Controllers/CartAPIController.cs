@@ -48,6 +48,7 @@ namespace ShoppingCartAPI.Controllers
 
                 foreach (var item in cart.CartDetails)
                 {
+                    // Summing subtotal
                     item.Product = productDtos.FirstOrDefault(u => u.ProductId == item.ProductId);
                     cart.CartHeader.CartTotal += (item.Count * item.Product.Price);
                 }

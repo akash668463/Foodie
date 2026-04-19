@@ -1,16 +1,13 @@
-
-
-using AutoMapper;
 using MessageBus;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OrderAPI;
-using OrderAPI.Extensions;
-using OrderAPI.Service.IService;
-using OrderAPI.Service;
-using OrderAPI.Utility;
 using OrderAPI.Data;
+using OrderAPI.Extensions;
+using OrderAPI.Service;
+using OrderAPI.Service.IService;
+using OrderAPI.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +66,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseHttpsRedirection();
 
