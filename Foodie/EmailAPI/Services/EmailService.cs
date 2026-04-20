@@ -1,4 +1,5 @@
 ﻿using EmailAPI.Data;
+using EmailAPI.Message;
 using EmailAPI.Models;
 using EmailAPI.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,12 @@ namespace EmailAPI.Services
             message.Append("</ul>");
 
             await LogAndEmail(message.ToString(), cartDto.CartHeader.Email);
+        }
+
+        public async Task LogOrderPlaced(RewardsMessage rewardsDto)
+        {
+            string message = "New Order Placed. <br/> Order ID : " + rewardsDto.OrderId;
+            await LogAndEmail(message, "dotnetmastery@gmail.com");
         }
 
         public async Task RegisterUserEmailAndLog(string email)
