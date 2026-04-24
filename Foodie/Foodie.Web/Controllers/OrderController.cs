@@ -1,6 +1,7 @@
 ﻿using Foodie.Web.Models;
 using Foodie.Web.Service.IService;
 using Foodie.Web.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,11 +15,12 @@ namespace Foodie.Web.Controllers
         {
             _orderService = orderService;
         }
+        [Authorize]
         public IActionResult OrderIndex()
         {
             return View();
         }
-
+        [Authorize]
         public async Task<IActionResult> OrderDetail(int orderId)
         {
             OrderHeaderDto orderHeaderDto = new OrderHeaderDto();
